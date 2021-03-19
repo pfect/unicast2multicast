@@ -19,3 +19,4 @@ multicast2unicast.o: multicast2unicast.c
 clean:
 	rm -f *.o
 	rm -f unicast2multicast
+	rm -f multicast2unicast

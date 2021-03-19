@@ -172,11 +172,7 @@ int main(int argc, char **argv)
   }
 
   /*****************************************************************/
-  /* set up multicast INPUT https://www.tenouk.com/Module41c.html
-   * 	struct sockaddr_in inaddr;
-		int insock;
-		socklen_t inaddrlen;
-   */
+  /* set up multicast INPUT */
 
 	/* Create a datagram socket on which to receive. */
 	insock=socket(AF_INET, SOCK_DGRAM, 0);
@@ -208,8 +204,8 @@ int main(int argc, char **argv)
 	}
   
 	/* join the group */
-	group.imr_multiaddr.s_addr = inet_addr("239.10.0.1");
-	group.imr_interface.s_addr = inet_addr("127.0.0.1");
+	group.imr_multiaddr.s_addr = inet_addr(multicast_addr);
+	group.imr_interface.s_addr = inet_addr("0.0.0.0"); // TODO: Check this
 	if(setsockopt(insock, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&group, sizeof(group)) < 0)
 	{
 		perror("Adding multicast group error");
@@ -217,7 +213,9 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	else
-		printf("Adding multicast group...OK.\n");
+	{
+		printf("Joined multicast group\n");
+	}
   
 
   /*****************************************************************/
