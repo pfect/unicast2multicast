@@ -25,3 +25,23 @@ Note that super user priviledges may be required to run this.
 
  * `0` - Success
  * `1` - Error
+
+# multicast2unicast 
+multicast2unicast - Bridge multicast IPv4 UDP packets and forward as unicast
+
+
+# Example
+
+# send OPUS audio to port 6000 as unicat
+./audiostreamer 
+
+# take unicast (6000) and forward to multicast (6000)
+./unicast2multicast -i 0.0.0.0:6000 -m 239.10.0.2:6000
+
+# take multicast (6000) and forward to unicast (6001)
+./multicast2unicast -m 239.10.0.1:6000 -u 127.0.0.1:6001
+
+# Recive and play stream from port 6001
+src/audioreceiver -p 6001
+
+
