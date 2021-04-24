@@ -32,7 +32,7 @@ multicast2unicast - Bridge multicast IPv4 UDP packets and forward as unicast
 
 # Example
 
-# send OPUS audio to port 6000 as unicat
+# send OPUS audio to port 6000 as unicast
 ./audiostreamer 
 
 # take unicast (6000) and forward to multicast (6000)
@@ -42,6 +42,6 @@ multicast2unicast - Bridge multicast IPv4 UDP packets and forward as unicast
 ./multicast2unicast -m 239.10.0.1:6000 -u 127.0.0.1:6001
 
 # Recive and play stream from port 6001
-src/audioreceiver -p 6001
+./audioreceiver -p 6001
 
 
